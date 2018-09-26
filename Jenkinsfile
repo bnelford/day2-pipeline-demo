@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p --name marco-polo-bcn 30000:3000 bnelford/marco-polo-day2:latest'
+                sh 'docker run -d --name marco-polo-bcn -p 30000:3000 bnelford/marco-polo-day2:latest'
             }
         }
     }

@@ -22,7 +22,9 @@ pipeline {
             }
         }
         stage('Run Integration Tests') {
-
+            steps {
+                sh 'npm test integrationtests/integrationtests.js'
+            }
         }
     }
     post {

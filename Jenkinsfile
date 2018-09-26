@@ -19,6 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'docker run -d --name marco-polo-bcn -p 30000:3000 bnelford/marco-polo-day2:latest'
+                sh 'sleep 5'
             }
         }
         stage('Run Integration Tests') {

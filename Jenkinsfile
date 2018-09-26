@@ -21,5 +21,14 @@ pipeline {
                 sh 'docker run -d --name marco-polo-bcn -p 30000:3000 bnelford/marco-polo-day2:latest'
             }
         }
+        stage('Run Integration Tests') {
+
+        }
+    }
+    post {
+        cleanup {
+            sh 'docker kill marco-polo-bcn'
+            sh 'docker rm marco-polo-bcn'
+        }
     }
 }

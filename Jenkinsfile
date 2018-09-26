@@ -16,6 +16,13 @@ pipeline {
                 sh 'docker build -t bnelford/marco-polo-day2 .'
             }
         }
+        stage('Gate') {
+            steps {
+                timeout(time: 10, unit: 'SECONDS') {
+                    input 'Do you want to proceed to the Deployment?'
+                }
+            }
+        }
         stage('Deploy') {
             steps {
                 sh 'docker run -d --name marco-polo-bcn -p 30000:3000 bnelford/marco-polo-day2:latest'
@@ -27,6 +34,7 @@ pipeline {
                 sh 'npm test integrationtests/integrationtests.js'
             }
         }
+
     }
     post {
         cleanup {

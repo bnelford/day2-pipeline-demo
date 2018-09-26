@@ -16,5 +16,10 @@ pipeline {
                 sh 'docker build -t bnelford/marco-polo-day2 .'
             }
         }
+        stage('Deploy') {
+            steps {
+                sh 'docker run -d -p --name marco-polo-bcn 30000:3000 bnelford/marco-polo-day2:latest'
+            }
+        }
     }
 }
